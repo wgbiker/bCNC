@@ -1250,10 +1250,10 @@ class CNCCanvas(Canvas, object):
 				r = self.cameraR * self.cameraScale
 
 		self.coords(self._cameraImage,   x, y)
-		self.coords(self._cameraHori,    x-wc, y, x+wc, y)
-		self.coords(self._cameraVert,    x, y-hc, x, y+hc)
-		self.coords(self._cameraCircle,  x-r, y-r, x+r, y+r)
-		self.coords(self._cameraCircle2, x-r*2, y-r*2, x+r*2, y+r*2)
+		self.coords(self._cameraHori,    x-wc, y+self.camera.ycenter, x+wc, y+self.camera.ycenter)
+		self.coords(self._cameraVert,    x+self.camera.xcenter, y-hc, x+self.camera.xcenter, y+hc)
+		self.coords(self._cameraCircle,  x-r+self.camera.xcenter, y-r+self.camera.ycenter, x+r+self.camera.xcenter, y+r+self.camera.ycenter)
+		self.coords(self._cameraCircle2, x+self.camera.xcenter-r*2, y+self.camera.ycenter-r*2, x+self.camera.xcenter+r*2, y+self.camera.ycenter+r*2)
 
 	# ----------------------------------------------------------------------
 	# Crop center of camera and search it in subsequent movements
